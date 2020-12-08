@@ -62,7 +62,14 @@ public class PushFileServiceImpl implements PushFileService {
 	}
 	
 	private void CleanFiles() throws IOException{
-		FileUtils.cleanDirectory(new File("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/"));
+		//FileUtils.cleanDirectory(new File("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/"));
+		
+		File folder = new File("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/");
+		for (File f : folder.listFiles()) {
+		    if (!f.getName().endsWith(".gitkeep")) {
+		        f.delete(); 
+		    }
+		}
 	}
 	
 	private void CleanArchiveFiles(){
