@@ -10,22 +10,26 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
-import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.common.base.Stopwatch;
+
 import main.java.Simplon.Fantoir.services.Interfaces.PushFileService;
+import main.java.fantoir.fantoir_talend_1_2.TalendLauncher;
 
 @RestController
 public class PushFileServiceImpl implements PushFileService {
 
 	@Override
 	public String pushFile(int nb_files) {
+		Stopwatch stopwatch = Stopwatch.createStarted();
         Document doc;
 		try {
 			ArrayList<String> processed_files = GetProcessedFiles();
@@ -53,12 +57,15 @@ public class PushFileServiceImpl implements PushFileService {
 	        }
 	        CleanArchiveFiles();
 	        
+	        TalendLauncher.StartImport();
+	        
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
+			return "Import failed";
 		}
 		
-		return null;
+		return String.format("Import of %d files succeed in %d seconds", nb_files, stopwatch.elapsed(TimeUnit.SECONDS));
 	}
 	
 	private void CleanFiles() throws IOException{
