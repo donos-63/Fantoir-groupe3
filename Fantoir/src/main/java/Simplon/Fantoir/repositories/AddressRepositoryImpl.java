@@ -67,7 +67,8 @@ public class AddressRepositoryImpl implements AddressRepository{
     	value.add(String.valueOf(result.getRep().toLowerCase()));
     	value.addAll(Arrays.asList(result.getNom_voie().toLowerCase().split(" ")));
     	value.addAll(Arrays.asList(result.getCommune().getNom_communes().toLowerCase().split(" ")));
-		
+    	value.removeAll(Arrays.asList("", null));
+    	
     	int nb_keywords = value.size();
 		value.retainAll(value_to_compare);
     	
