@@ -16,7 +16,8 @@ import java.util.zip.GZIPInputStream;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Stopwatch;
@@ -26,16 +27,18 @@ import main.java.fantoir.fantoir_talend_1_2.TalendLauncher;
 
 @RestController
 public class PushFileServiceImpl implements PushFileService {
-
+	@Autowired
+	private Environment env;
+	
 	@Override
 	public String pushFile(int nb_files) {
 		Stopwatch stopwatch = Stopwatch.createStarted();
         Document doc;
 		try {
-			ArrayList<String> processed_files = GetProcessedFiles();
+			ArrayList<String> processed_files = GetProcessedFiles(env.getProperty("fantoir.out.folder"), env.getProperty("fantoir.out.processed_files"));
 			ArrayList<String> new_files = new ArrayList<>();
-						
-			doc = Jsoup.connect("https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/").get();
+			
+			doc = Jsoup.connect(env.getProperty("fantoir.remote.url")).get();
 	        for (Element file : doc.select("a")) {
 	        	String fileName = file.attr("href");
 	        	if(!fileName.startsWith("adresses-"))
@@ -49,15 +52,16 @@ public class PushFileServiceImpl implements PushFileService {
 	        		break;
 	        }
 	        
-        	CleanFiles();
+        	CleanFiles(env.getProperty("fantoir.in.folder"));
 	        for(String file : new_files)
 	        {
-	        	LoadFile(file, "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/");
-	        	DecompressGzip("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/"+file, "C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/"+file.replace(".gz", ""));
+	        	LoadFile(env.getProperty("fantoir.remote.url"), env.getProperty("fantoir.in.folder"), file);
+	        	DecompressGzip(env.getProperty("fantoir.in.folder"), env.getProperty("fantoir.in.folder"), file);
 	        }
-	        CleanArchiveFiles();
+	        CleanArchiveFiles(env.getProperty("fantoir.in.folder"));
 	        
-	        TalendLauncher.StartImport();
+	        
+	        TalendLauncher.StartImport(env.getProperty("fantoir.in.folder"), env.getProperty("fantoir.out.folder"), env.getProperty("fantoir.out.processed_files"), env.getProperty("fantoir.out.db") );
 	        
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
@@ -68,10 +72,10 @@ public class PushFileServiceImpl implements PushFileService {
 		return String.format("Import of %d files succeed in %d seconds", nb_files, stopwatch.elapsed(TimeUnit.SECONDS));
 	}
 	
-	private void CleanFiles() throws IOException{
+	private void CleanFiles(String folder_path) throws IOException{
 		//FileUtils.cleanDirectory(new File("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/"));
 		
-		File folder = new File("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/");
+		File folder = new File(folder_path);
 		for (File f : folder.listFiles()) {
 		    if (!f.getName().endsWith(".gitkeep")) {
 		        f.delete(); 
@@ -79,8 +83,8 @@ public class PushFileServiceImpl implements PushFileService {
 		}
 	}
 	
-	private void CleanArchiveFiles(){
-		File folder = new File("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/");
+	private void CleanArchiveFiles(String folder_path){
+		File folder = new File(folder_path);
 		for (File f : folder.listFiles()) {
 		    if (f.getName().endsWith(".gz")) {
 		        f.delete(); 
@@ -88,10 +92,10 @@ public class PushFileServiceImpl implements PushFileService {
 		}
 	}
 	
-	private void LoadFile(String fileName, String filepath){
+	private void LoadFile(String file_url, String folder_path, String fileName){
 		
-		try (BufferedInputStream inputStream = new BufferedInputStream(new URL(filepath+fileName).openStream());
-				  FileOutputStream fileOS = new FileOutputStream("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in/"+fileName)) {
+		try (BufferedInputStream inputStream = new BufferedInputStream(new URL(file_url+fileName).openStream());
+				  FileOutputStream fileOS = new FileOutputStream(Paths.get(folder_path,fileName).toFile())) {
 				    byte data[] = new byte[1024];
 				    int byteContent;
 				    while ((byteContent = inputStream.read(data, 0, 1024)) != -1) {
@@ -103,10 +107,10 @@ public class PushFileServiceImpl implements PushFileService {
 				}
 	}
 	
-	private ArrayList<String> GetProcessedFiles(){
+	private ArrayList<String> GetProcessedFiles(String folder_path, String filename){
 		    try {
 		      ArrayList<String> files = new ArrayList<String>();
-		      File myObj = new File("C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/out/processed_files.txt");
+		      File myObj = Paths.get(folder_path, filename).toFile();
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
 		        String data = myReader.nextLine();
@@ -123,11 +127,11 @@ public class PushFileServiceImpl implements PushFileService {
 			return null;
 	}
 	
-	private void DecompressGzip(String source, String target) throws IOException {
-
+	private void DecompressGzip(String folder_source, String folder_target, String filename) throws IOException {
+		
         try (GZIPInputStream gis = new GZIPInputStream(
-                                      new FileInputStream( Paths.get(source).toFile()));
-             FileOutputStream fos = new FileOutputStream( Paths.get(target).toFile())) {
+                                      new FileInputStream( Paths.get(folder_source, filename).toFile()));
+             FileOutputStream fos = new FileOutputStream( Paths.get(folder_target, filename.replace(".gz", "")).toFile())) {
 
             // copy GZIPInputStream to FileOutputStream
             byte[] buffer = new byte[1024];

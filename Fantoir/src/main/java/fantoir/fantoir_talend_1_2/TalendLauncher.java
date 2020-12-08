@@ -1,14 +1,13 @@
 package main.java.fantoir.fantoir_talend_1_2;
 
-public class TalendLauncher {
+import java.nio.file.Paths;
 
-	public static void StartImport() {
-		// TODO Auto-generated method stub
+public class TalendLauncher {
+	public static void StartImport(String input_folder, String output_folder, String output_filepath, String fantoir_db) {
 		fantoir_talend talendJob=new fantoir_talend();
 
-		String input_folder="C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/in";
-		String output_file="C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/out/processed_files.txt";
-		String fantoir_db_File="C:/prairie/projet11/Fantoir-groupe3/Fantoir/data/out/fantoir.db";
+		String output_file=Paths.get(output_folder,output_filepath).toString().replace("\\","/");
+		String fantoir_db_File=Paths.get(output_folder,fantoir_db).toString().replace("\\","/");
 		String [] context=new String[] {"--context_param input_folder="+input_folder,"--context_param output_file="+output_file,"--context_param fantoir_db_File="+fantoir_db_File};
 		talendJob.runJob(context);
 	}
