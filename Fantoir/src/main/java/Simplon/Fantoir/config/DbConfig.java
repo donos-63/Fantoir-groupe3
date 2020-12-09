@@ -1,3 +1,12 @@
+/**
+*
+* Database configuration
+*
+* @author  Mathieu Simon
+* @version 1.0
+* @since   2020-12-07
+*
+**/
 package main.java.Simplon.Fantoir.config;
 
 import java.util.Properties;
@@ -19,12 +28,15 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "main.java.Simplon.Fantoir.repositories")
-// @PropertySource("persistence-sqlite.properties")
 public class DbConfig {
 
 	@Autowired
 	private Environment env;
 
+	/**
+	 * Datasource initialization
+	 * @return
+	 */
 	@Bean(name = "dataSource")
 	public DataSource dataSource() {
 		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -35,7 +47,10 @@ public class DbConfig {
 		return dataSource;
 	}
 
-	
+	/**
+	 * ORM factory
+	 * @return
+	 */
     @Autowired
 	@Bean(name = "sessionFactory")
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -47,6 +62,11 @@ public class DbConfig {
 		return em;
 	}
 	
+    /**
+     * Transaction manager
+     * @param sessionFactory
+     * @return
+     */
     @Autowired
     @Bean(name = "transactionManager")
     public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
@@ -55,6 +75,10 @@ public class DbConfig {
         return transactionManager;
     }
     
+    /**
+     * Initialize entity manager from properties file
+     * @return
+     */
 	final Properties additionalProperties() {
 		final Properties hibernateProperties = new Properties();
 		if (env.getProperty("hibernate.hbm2ddl.auto") != null) {

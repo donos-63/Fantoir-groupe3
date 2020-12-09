@@ -1,3 +1,12 @@
+/**
+*
+* Entité Adresse
+*
+* @author  Mathieu Simon
+* @version 1.0
+* @since   2020-12-04
+*
+**/
 package main.java.Simplon.Fantoir.models;
 
 import javax.persistence.Column;

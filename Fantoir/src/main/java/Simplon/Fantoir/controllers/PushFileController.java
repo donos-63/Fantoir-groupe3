@@ -1,3 +1,11 @@
+/**
+* API controller with SpringBoot
+*
+* @author  Mathieu Simon
+* @version 1.0
+* @since   2020-12-07
+*
+**/
 package main.java.Simplon.Fantoir.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +35,6 @@ public class PushFileController {
     @ResponseBody
     @ApiOperation(value = "Get files from server for Talend integration")
 	public String search(@PathVariable final int nb_file) throws IOException {
-		return this.pushFileService.pushFile(nb_file);
+		return this.pushFileService.PushFilesInDatabase(nb_file);
 	}
 }
