@@ -1,3 +1,4 @@
+/* Create Commune table */
 CREATE TABLE Commune (
     code_postal INT,
     code_insee  INT,
@@ -7,9 +8,9 @@ CREATE TABLE Commune (
     )
 );
 
-
+/* Create Adresse table */
 CREATE TABLE Adresse (
-    numero     INT          NOT NULL,
+    numero     INT,
     rep        VARCHAR (0),
     nom_voie   VARCHAR (26) NOT NULL,
     code_insee INT          NOT NULL
