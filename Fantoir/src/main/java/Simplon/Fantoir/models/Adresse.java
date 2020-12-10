@@ -31,8 +31,8 @@ public class Adresse {
     @JsonIgnore
     private int id;
 	
-    @Column(nullable = false)
-    private int numero;
+    @Column(nullable = true)
+    private Integer numero;
 
     @Column(nullable = true)
     private String rep;
@@ -50,7 +50,7 @@ public class Adresse {
     public Adresse() {
     }
 
-    public Adresse(int code_insee, int numero, String rep, String nom_voie) {
+    public Adresse(int code_insee, Integer numero, String rep, String nom_voie) {
         super();
 		this.numero = numero;
 		this.rep = rep;
@@ -61,11 +61,11 @@ public class Adresse {
         return id;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
 		this.numero = numero;
     }
 	

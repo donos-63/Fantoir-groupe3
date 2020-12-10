@@ -68,7 +68,7 @@ public class AddressRepositoryImpl implements AddressRepository{
 
     	try{
 	    	NativeQuery q = session.createSQLQuery("SELECT Adresse.id  FROM Adresse JOIN Commune on Commune.code_insee = Adresse.code_insee "
-	    											+"WHERE numero || '%' || rep || '%'  || nom_voie || '%' || code_postal || '%' || nom_commune LIKE :address_clause "
+	    											+"WHERE IFNULL(numero,'') || '%' || IFNULL(rep,'') || '%'  || nom_voie || '%' || code_postal || '%' || nom_commune LIKE :address_clause "
 	    											+"LIMIT :maxSearchCount");
 	
 	        q.setParameter("address_clause", address_clause);
@@ -139,9 +139,11 @@ public class AddressRepositoryImpl implements AddressRepository{
     private int getMatchingRate(String[] target, Adresse result){
     	List<String> value_to_compare = Arrays.asList(target); 
     	ArrayList<String> value = new ArrayList<String>(); 
-    	value.add(String.valueOf(result.getNumero()));
+    	if(result.getNumero() != null) //lieux-dit
+    		value.add(String.valueOf(result.getNumero()));
     	value.add(String.valueOf(result.getCommune().getCode_postal()));
-    	value.add(String.valueOf(result.getRep().toLowerCase()));
+    	if(result.getRep() != null) //lieux-dit
+    		value.add(String.valueOf(result.getRep().toLowerCase()));
     	value.addAll(Arrays.asList(result.getNom_voie().toLowerCase().split(" ")));
     	value.addAll(Arrays.asList(result.getCommune().getNom_communes().toLowerCase().split(" ")));
     	value.removeAll(Arrays.asList("", null));
