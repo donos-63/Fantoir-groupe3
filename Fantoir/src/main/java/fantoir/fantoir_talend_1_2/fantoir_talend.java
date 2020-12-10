@@ -15,7 +15,7 @@
 // limitations under the License.
 
 
-package fantoir.fantoir_talend_1_2;
+package main.java.fantoir.fantoir_talend_1_2;
 
 import routines.Numeric;
 import routines.DataOperation;
