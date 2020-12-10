@@ -1,5 +1,6 @@
 package fr.simplon.fantoir.models;
 
+//Importation des librairies
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Client {
     public Client() {
     }
 
+    //Instanciation des 
     public Client(String numero, String nomVoie, String codePostal, String nomCommune) {
         this.numero = numero;
         this.nom_voie = nomVoie;
@@ -37,6 +39,7 @@ public class Client {
         this.nom_commune = nomCommune;
     }
 
+    //Déclaration des getter/setter
     public String getId() {
         return id;
     }

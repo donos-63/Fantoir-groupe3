@@ -1,5 +1,6 @@
 package fr.simplon.fantoir.service;
 
+//Importation des librairies
 import fr.simplon.fantoir.models.Client;
 import fr.simplon.fantoir.repositories.ClientRepository;
 import java.util.List;
@@ -12,15 +13,8 @@ public class ClientService implements IClientService {
     @Autowired
     private ClientRepository repository;
 
-    // @Override
-    // public List<Client> findByNameEndsWith(String name) {
-
-    //     var clients = (List<Client>) repository.findByNameEndsWith(name);
-    //     return clients;
-    // }
-
     public List<Client> findAll(String name) {
-
+        //Cette déclaration est essentielle pour insérer dans la requête le mot-clé inséré dans le lien url
         var clients = (List<Client>) repository.findAll("%" + name + "%");
         return clients;
     }

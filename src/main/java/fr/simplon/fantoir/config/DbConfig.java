@@ -1,5 +1,6 @@
 package fr.simplon.fantoir.config;
 
+//Importation des librairies
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -11,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.sqlite.SQLiteDataSource;
@@ -24,16 +24,7 @@ public class DbConfig {
     @Autowired
     private Environment env;
 
-    // @Bean
-    // public DataSource dataSource() {
-    //     final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    //     dataSource.setDriverClassName(env.getProperty("driverClassName"));
-    //     dataSource.setUrl(env.getProperty("url"));
-    //     dataSource.setUsername(env.getProperty("user"));
-    //     dataSource.setPassword(env.getProperty("password"));
-    //     return dataSource;
-    // }
-
+    //Déclaration de la base de données
     @Bean
     public DataSource dataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
@@ -43,6 +34,7 @@ public class DbConfig {
         return dataSourceBuilder.build();
     }
 
+    //Ajout des entités
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -53,6 +45,7 @@ public class DbConfig {
         return em;
     }
 
+    //Ajout du dialect et du SQL
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
 
