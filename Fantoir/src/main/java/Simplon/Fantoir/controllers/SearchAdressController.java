@@ -22,7 +22,7 @@ import main.java.Simplon.Fantoir.models.Adresse;
 import main.java.Simplon.Fantoir.services.Interfaces.SearchAdressService;
 
 @RestController
-@Api(tags = "Book management")
+@Api(tags = "Adresses selector")
 public class SearchAdressController {
 
     private SearchAdressService addressService;

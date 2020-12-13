@@ -1,8 +1,9 @@
 /* Create Commune table */
 CREATE TABLE Commune (
-    code_postal INT,
-    code_insee  INT,
-    nom_commune VARCHAR (6),
+    code_postal INT         NOT NULL,
+    code_insee  STRING      NOT NULL
+                            PRIMARY KEY,
+    nom_commune VARCHAR (30) NOT NULL,
     PRIMARY KEY (
         code_insee
     )

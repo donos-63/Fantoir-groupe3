@@ -50,7 +50,7 @@ public class Adresse {
     public Adresse() {
     }
 
-    public Adresse(int code_insee, Integer numero, String rep, String nom_voie) {
+    public Adresse(String code_insee, Integer numero, String rep, String nom_voie) {
         super();
 		this.numero = numero;
 		this.rep = rep;
