@@ -29,26 +29,37 @@ La société Establish a besoin d'une base de données qui recense les différen
 
 * service de récupération des adresses correspondant à une entrée utilisateur
 
-http://localhost:8080/SearchAdress/rue%vivaldi
+http://localhost:8080/SearchAdress/adresse
+
+> **adresse** : chaine de caractère correspondant à l'adresse recherchée
+
 
 * service de récupération des adresses pour un code postal utilisé
 
-http://localhost:8080/SearchAddressByPostalCode/1750
+http://localhost:8080/SearchAddressByPostalCode/code_postal
+> **code_postal** : code postal recherché
+
 
 * service qui donne les Communes ayant le plus d'entrée dans le référentiel
 
-http://localhost:8080/SearchAddressByTopCounts/20
+http://localhost:8080/SearchAddressByTopCounts/top_number
+> **top_number** : nombre de villes recherchée
+
 
 * service qui intègre un certain nombre de fichiers adresse ou lieux-dits dans la base de donnée
 
-http://localhost:8080/PushFile/20
+http://localhost:8080/PushFile/nb_fichiers
+> **nb_fichiers** : nombre de fichiers à intégrer
+
 
 **Pour pouvoir tester les services, il faut que des données soit présentes en base de donnée, via localhost:8080/PushFile/**
+
 
 
 ### Base de donnée
 
 ![bdd](screenshots/bdd_uml.png)
+
 
 
 ### Workflow Talend
