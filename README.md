@@ -9,14 +9,14 @@ La société Establish a besoin d'une base de données qui recense les différen
 
 * Java 1.8
 
-* Eclipse
+* Eclipse ou un autre IDE (projet fait sous Eclipse)
 
 
 ### Installation
 
-* une base de donnée sqlite "vide" est disponible [data/out/fantoir.db](Fantoir/data/out/fantoir.db)
+* une base de donnée sqlite "vide" est disponible : [data/out/fantoir.db](Fantoir/data/out/fantoir.db)
 
-* en cas de création de la bdd, les scripts sont disponible [data/scripts/fantoire.DDL](main/Fantoir/data/scripts/fantoire.DDL)
+  * en cas de création de la bdd, les scripts sont disponible : [data/scripts/fantoire.DDL](main/Fantoir/data/scripts/fantoire.DDL)
 
 * mettre à jour les chemins d'accés dans le fichier [src/main/resources/application.properties](Fantoir/src/main/resources/application.properties)
 
@@ -33,16 +33,18 @@ La société Establish a besoin d'une base de données qui recense les différen
   5. mémorisation des fichiers intégrés 
 
 * recherche par adresse :
-  * recherche de chaines partielles, du type "rue%du%pont%Alby"
+  * recherche de chaines partielles, du type "rue du pont Alby"
   
 * recherche des adresses pour un code postal
-  * ! un code postal peut correspondre à plusieurs villes
+  * attention, un code postal peut correspondre à plusieurs villes
 
 * recherche des villes ayant le plus d'entrée
   * utile pour les tests
 
 
 ### Utilisation
+
+**Pour pouvoir tester les services, il faut que des données soit présentes en base de donnée, via localhost:8080/PushFile/** 
 
 * service de récupération des adresses correspondant à une entrée utilisateur
 
@@ -69,10 +71,6 @@ http://localhost:8080/PushFile/nb_fichiers
 > **nb_fichiers** : nombre de fichiers à intégrer
 
 
-**Pour pouvoir tester les services, il faut que des données soit présentes en base de donnée, via localhost:8080/PushFile/**
-
-
-
 ### Base de donnée
 
 ![bdd](screenshots/bdd_uml.png)
@@ -82,3 +80,7 @@ http://localhost:8080/PushFile/nb_fichiers
 ### Workflow Talend
 
 ![workflow](screenshots/talend_workflow.png)
+
+Les sources du projet Talend sont disponible [ici](Fantoir/Talend_project)
+
+
