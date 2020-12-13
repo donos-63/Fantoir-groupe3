@@ -1,26 +1,26 @@
 # Fantoir-groupe3
 
+![workflow](https://github.com/donos-63/Fantoir-groupe3/screenshots/brief_logo.jpeg)
 
-
-## La société Establish a besoin d'une base de données qui recense les différentes adresses postales françaises pour son application de gestion. Elle possède une source de données mais ne sait pas l'utiliser en tant que telle pour son application (principalement à cause de la volumétrie du fichier). Elle sollicite votre aide pour en faire quelque chose.
+La société Establish a besoin d'une base de données qui recense les différentes adresses postales françaises pour son application de gestion. Elle possède une source de données mais ne sait pas l'utiliser en tant que telle pour son application (principalement à cause de la volumétrie du fichier). Elle sollicite votre aide pour en faire quelque chose.
 
 
 ### Pré-requis
 
-Java 1.8
+* Java 1.8
 
-Eclipse
+* Eclipse
 
 
 ### Installation
 
-une base de donnée sqlite "vide" est disponible ici
+* une base de donnée sqlite "vide" est disponible [data/out/fantoir.db](https://github.com/donos-63/Fantoir-groupe3/blob/main/Fantoir/data/out/fantoir.db)
 
-en cas de création de la bdd, les scripts sont disponible ici
+* en cas de création de la bdd, les scripts sont disponible [data/scripts/fantoire.DDL](https://github.com/donos-63/Fantoir-groupe3/blob/main/Fantoir/data/scripts/fantoire.DDL)
 
-mettre à jour les chemins d'accés dans le fichier application.properties
+* mettre à jour les chemins d'accés dans le fichier [src/main/resources/application.properties](https://github.com/donos-63/Fantoir-groupe3/blob/main/Fantoir/src/main/resources/application.properties)
 
-dans le répertoire de l'application, lancer la commande ./mvnw.cmd install, ou via Eclipse > click droit sur le projet > maven > download source
+* dans le répertoire de l'application, lancer la commande ./mvnw.cmd install, ou via Eclipse > click droit sur le projet > maven > download source
 
 
 ### Business implémentation
@@ -41,18 +41,16 @@ http://localhost:8080/SearchAddressByTopCounts/20
 
 * service qui intègre un certain nombre de fichiers adresse ou lieux-dits dans la base de donnée
 
-localhost:8080/PushFile/20
+http://localhost:8080/PushFile/20
 
 **Pour pouvoir tester les services, il faut que des données soit présentes en base de donnée, via localhost:8080/PushFile/**
 
 
 ### Base de donnée
 
-image bdd
-
+![bdd](https://github.com/donos-63/Fantoir-groupe3/screenshots/bdd_uml.png)
 
 
 ### Workflow Talend
 
-image de talend
-
+![workflow](https://github.com/donos-63/Fantoir-groupe3/screenshots/talend_workflow.png)
