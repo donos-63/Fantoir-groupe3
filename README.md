@@ -1,6 +1,6 @@
 # Fantoir-groupe3
 
-![workflow](~/screenshots/brief_logo.jpeg)
+![workflow](screenshots/brief_logo.jpeg)
 
 La société Establish a besoin d'une base de données qui recense les différentes adresses postales françaises pour son application de gestion. Elle possède une source de données mais ne sait pas l'utiliser en tant que telle pour son application (principalement à cause de la volumétrie du fichier). Elle sollicite votre aide pour en faire quelque chose.
 
@@ -14,11 +14,11 @@ La société Establish a besoin d'une base de données qui recense les différen
 
 ### Installation
 
-* une base de donnée sqlite "vide" est disponible [data/out/fantoir.db](https://github.com/donos-63/Fantoir-groupe3/blob/main/Fantoir/data/out/fantoir.db)
+* une base de donnée sqlite "vide" est disponible [data/out/fantoir.db](Fantoir/data/out/fantoir.db)
 
-* en cas de création de la bdd, les scripts sont disponible [data/scripts/fantoire.DDL](https://github.com/donos-63/Fantoir-groupe3/blob/main/Fantoir/data/scripts/fantoire.DDL)
+* en cas de création de la bdd, les scripts sont disponible [data/scripts/fantoire.DDL](main/Fantoir/data/scripts/fantoire.DDL)
 
-* mettre à jour les chemins d'accés dans le fichier [src/main/resources/application.properties](https://github.com/donos-63/Fantoir-groupe3/blob/main/Fantoir/src/main/resources/application.properties)
+* mettre à jour les chemins d'accés dans le fichier [src/main/resources/application.properties](Fantoir/src/main/resources/application.properties)
 
 * dans le répertoire de l'application, lancer la commande ./mvnw.cmd install, ou via Eclipse > click droit sur le projet > maven > download source
 
@@ -48,9 +48,9 @@ http://localhost:8080/PushFile/20
 
 ### Base de donnée
 
-![bdd](https://github.com/donos-63/Fantoir-groupe3/screenshots/bdd_uml.png)
+![bdd](screenshots/bdd_uml.png)
 
 
 ### Workflow Talend
 
-![workflow](https://github.com/donos-63/Fantoir-groupe3/screenshots/talend_workflow.png)
+![workflow](screenshots/talend_workflow.png)
