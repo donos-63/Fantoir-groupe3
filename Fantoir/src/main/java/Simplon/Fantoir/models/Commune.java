@@ -22,7 +22,7 @@ import org.hibernate.annotations.Table;
 public class Commune {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int code_insee;
+    private String code_insee;
 	
     @Column(nullable = false)
     private int code_postal;
@@ -33,18 +33,18 @@ public class Commune {
     public Commune() {
     }
 
-    public Commune(int code_insee, int code_postal, String nom_commune) {
+    public Commune(String code_insee, int code_postal, String nom_commune) {
         super();
         this.code_insee = code_insee;
 		this.code_postal = code_postal;
 		this.nom_commune = nom_commune;
     }
     
-    public int setCode_insee() {
+    public String setCode_insee() {
         return code_insee;
     }
     
-    public int getCode_insee() {
+    public String getCode_insee() {
         return code_insee;
     }
 

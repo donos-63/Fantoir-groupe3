@@ -1117,31 +1117,7 @@ public void tFileList_1Process(final java.util.Map<String, Object> globalMap) th
 	
 	
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row1", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("row6", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("If1", 3, 0);
-					}           			
-				
-					if(execStat){				
 	       				runStat.updateStatOnConnection("copyOffilename", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("row2", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("If3", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("Commune_LieuxDit", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -1149,7 +1125,27 @@ public void tFileList_1Process(final java.util.Map<String, Object> globalMap) th
 					}           			
 				
 					if(execStat){				
+	       				runStat.updateStatOnConnection("row4", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row6", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("If3", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row2", 3, 0);
+					}           			
+				
+					if(execStat){				
 	       				runStat.updateStatOnConnection("If2", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row1", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -1157,11 +1153,15 @@ public void tFileList_1Process(final java.util.Map<String, Object> globalMap) th
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("Adresse_LieuxDit", 3, 0);
+	       				runStat.updateStatOnConnection("Commune_LieuxDit", 3, 0);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row4", 3, 0);
+	       				runStat.updateStatOnConnection("If1", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("Adresse_LieuxDit", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -2177,9 +2177,9 @@ public static class communeStruct implements routines.system.IPersistableRow<com
 					return this.code_postal;
 				}
 				
-			    public Integer code_insee;
+			    public String code_insee;
 
-				public Integer getCode_insee () {
+				public String getCode_insee () {
 					return this.code_insee;
 				}
 				
@@ -2252,7 +2252,7 @@ public static class communeStruct implements routines.system.IPersistableRow<com
 		
 						this.code_postal = readInteger(dis);
 					
-						this.code_insee = readInteger(dis);
+					this.code_insee = readString(dis);
 					
 					this.nom_commune = readString(dis);
 					
@@ -2278,9 +2278,9 @@ public static class communeStruct implements routines.system.IPersistableRow<com
 				
 						writeInteger(this.code_postal,dos);
 					
-					// Integer
+					// String
 				
-						writeInteger(this.code_insee,dos);
+						writeString(this.code_insee,dos);
 					
 					// String
 				
@@ -2300,7 +2300,7 @@ public static class communeStruct implements routines.system.IPersistableRow<com
 		sb.append(super.toString());
 		sb.append("[");
 		sb.append("code_postal="+String.valueOf(code_postal));
-		sb.append(",code_insee="+String.valueOf(code_insee));
+		sb.append(",code_insee="+code_insee);
 		sb.append(",nom_commune="+nom_commune);
 	    sb.append("]");
 
@@ -2365,9 +2365,9 @@ public static class adresseStruct implements routines.system.IPersistableRow<adr
 					return this.nom_voie;
 				}
 				
-			    public Integer code_insee;
+			    public String code_insee;
 
-				public Integer getCode_insee () {
+				public String getCode_insee () {
 					return this.code_insee;
 				}
 				
@@ -2438,7 +2438,7 @@ public static class adresseStruct implements routines.system.IPersistableRow<adr
 					
 					this.nom_voie = readString(dis);
 					
-						this.code_insee = readInteger(dis);
+					this.code_insee = readString(dis);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -2470,9 +2470,9 @@ public static class adresseStruct implements routines.system.IPersistableRow<adr
 				
 						writeString(this.nom_voie,dos);
 					
-					// Integer
+					// String
 				
-						writeInteger(this.code_insee,dos);
+						writeString(this.code_insee,dos);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -2490,7 +2490,7 @@ public static class adresseStruct implements routines.system.IPersistableRow<adr
 		sb.append("numero="+String.valueOf(numero));
 		sb.append(",rep="+rep);
 		sb.append(",nom_voie="+nom_voie);
-		sb.append(",code_insee="+String.valueOf(code_insee));
+		sb.append(",code_insee="+code_insee);
 	    sb.append("]");
 
 	    return sb.toString();
@@ -2572,9 +2572,9 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 					return this.code_postal;
 				}
 				
-			    public Integer code_insee;
+			    public String code_insee;
 
-				public Integer getCode_insee () {
+				public String getCode_insee () {
 					return this.code_insee;
 				}
 				
@@ -2729,7 +2729,7 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 					
 						this.code_postal = readInteger(dis);
 					
-						this.code_insee = readInteger(dis);
+					this.code_insee = readString(dis);
 					
 					this.nom_commune = readString(dis);
 					
@@ -2819,9 +2819,9 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 				
 						writeInteger(this.code_postal,dos);
 					
-					// Integer
+					// String
 				
-						writeInteger(this.code_insee,dos);
+						writeString(this.code_insee,dos);
 					
 					// String
 				
@@ -2914,7 +2914,7 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 		sb.append(",rep="+rep);
 		sb.append(",nom_voie="+nom_voie);
 		sb.append(",code_postal="+String.valueOf(code_postal));
-		sb.append(",code_insee="+String.valueOf(code_insee));
+		sb.append(",code_insee="+code_insee);
 		sb.append(",nom_commune="+nom_commune);
 		sb.append(",code_insee_ancienne_commune="+code_insee_ancienne_commune);
 		sb.append(",nom_ancienne_commune="+nom_ancienne_commune);
@@ -3060,7 +3060,7 @@ java.sql.Connection conn_tDBOutput_2 = null;
             }
                 if(!whetherExist_tDBOutput_2) {
                     try (java.sql.Statement stmtCreate_tDBOutput_2 = conn_tDBOutput_2.createStatement()) {
-                        stmtCreate_tDBOutput_2.execute("CREATE TABLE \"" + tableName_tDBOutput_2 + "\"(\"code_postal\" INT ,\"code_insee\" INT ,\"nom_commune\" VARCHAR(6)  ,primary key(\"code_insee\"))");
+                        stmtCreate_tDBOutput_2.execute("CREATE TABLE \"" + tableName_tDBOutput_2 + "\"(\"code_postal\" INT ,\"code_insee\" VARCHAR(5)  ,\"nom_commune\" VARCHAR(6)  ,primary key(\"code_insee\"))");
                     }
                 }
 	    java.sql.PreparedStatement pstmt_tDBOutput_2 = conn_tDBOutput_2.prepareStatement("SELECT COUNT(1) FROM \"" + "Commune" + "\" WHERE \"code_insee\" = ?");
@@ -3150,7 +3150,7 @@ java.sql.Connection conn_tDBOutput_1 = null;
             }
                 if(!whetherExist_tDBOutput_1) {
                     try (java.sql.Statement stmtCreate_tDBOutput_1 = conn_tDBOutput_1.createStatement()) {
-                        stmtCreate_tDBOutput_1.execute("CREATE TABLE \"" + tableName_tDBOutput_1 + "\"(\"numero\" INT ,\"rep\" VARCHAR(0)  ,\"nom_voie\" VARCHAR(26)  ,\"code_insee\" INT )");
+                        stmtCreate_tDBOutput_1.execute("CREATE TABLE \"" + tableName_tDBOutput_1 + "\"(\"numero\" INT ,\"rep\" VARCHAR(0)  ,\"nom_voie\" VARCHAR(26)  ,\"code_insee\" VARCHAR(5)  )");
                     }
                 }
 	    String insert_tDBOutput_1 = "INSERT INTO \"" + "ADRESSE" + "\" (\"numero\",\"rep\",\"nom_voie\",\"code_insee\") VALUES (?,?,?,?)";
@@ -3204,7 +3204,6 @@ java.sql.Connection conn_tDBOutput_1 = null;
 // ###############################
 // # Vars initialization
 class  Var__tMap_1__Struct  {
-	int num_ligne;
 }
 Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
 // ###############################
@@ -3374,26 +3373,8 @@ adresseStruct adresse_tmp = new adresseStruct();
 				
 					columnIndexWithD_tFileInputDelimited_1 = 6;
 					
-						temp = fid_tFileInputDelimited_1.get(columnIndexWithD_tFileInputDelimited_1);
-						if(temp.length() > 0) {
-							
-								try {
-								
-    								row1.code_insee = ParserUtils.parseTo_Integer(temp);
-    							
-    							} catch(java.lang.Exception ex_tFileInputDelimited_1) {
-									rowstate_tFileInputDelimited_1.setException(new RuntimeException(String.format("Couldn't parse value for column '%s' in '%s', value is '%s'. Details: %s",
-										"code_insee", "row1", temp, ex_tFileInputDelimited_1), ex_tFileInputDelimited_1));
-								}
-    							
-						} else {						
-							
-								
-									row1.code_insee = null;
-								
-							
-						}
-					
+							row1.code_insee = fid_tFileInputDelimited_1.get(columnIndexWithD_tFileInputDelimited_1);
+						
 				
 					columnIndexWithD_tFileInputDelimited_1 = 7;
 					
@@ -3634,8 +3615,7 @@ if(row1 != null) {
 	        // ###############################
         	// # Vars tables
         
-Var__tMap_1__Struct Var = Var__tMap_1;
-Var.num_ligne = Numeric.sequence("s1",1,1) ;// ###############################
+Var__tMap_1__Struct Var = Var__tMap_1;// ###############################
         // ###############################
         // # Output tables
 
@@ -3727,8 +3707,8 @@ if(commune != null) {
         whetherReject_tDBOutput_2 = false;
 					
                     if(commune.code_insee == null) {
-pstmt_tDBOutput_2.setNull(1, java.sql.Types.INTEGER);
-} else {pstmt_tDBOutput_2.setInt(1, commune.code_insee);
+pstmt_tDBOutput_2.setNull(1, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_2.setString(1, commune.code_insee);
 }
 
             int checkCount_tDBOutput_2 = -1;
@@ -3751,11 +3731,11 @@ pstmtUpdate_tDBOutput_2.setNull(2, java.sql.Types.VARCHAR);
 
                             query_tDBOutput_2 = query_tDBOutput_2.append(commune.nom_commune== null ?  "null" :"'" + commune.nom_commune + "'").append(updateSQLSplits_tDBOutput_2[2]);
                         if(commune.code_insee == null) {
-pstmtUpdate_tDBOutput_2.setNull(3, java.sql.Types.INTEGER);
-} else {pstmtUpdate_tDBOutput_2.setInt(3, commune.code_insee);
+pstmtUpdate_tDBOutput_2.setNull(3, java.sql.Types.VARCHAR);
+} else {pstmtUpdate_tDBOutput_2.setString(3, commune.code_insee);
 }
 
-                            query_tDBOutput_2 = query_tDBOutput_2.append(commune.code_insee== null ?  "null" :String.valueOf(commune.code_insee)).append(updateSQLSplits_tDBOutput_2[3]);
+                            query_tDBOutput_2 = query_tDBOutput_2.append(commune.code_insee== null ?  "null" :"'" + commune.code_insee + "'").append(updateSQLSplits_tDBOutput_2[3]);
                     globalMap.put("tDBOutput_2_QUERY", query_tDBOutput_2.toString().trim());
                 try {
                     updatedCount_tDBOutput_2 = updatedCount_tDBOutput_2 + pstmtUpdate_tDBOutput_2.executeUpdate();
@@ -3773,11 +3753,11 @@ pstmtInsert_tDBOutput_2.setNull(1, java.sql.Types.INTEGER);
 
                             query_tDBOutput_2 = query_tDBOutput_2.append(insertSQLSplits_tDBOutput_2[0]).append(commune.code_postal== null ?  "null" :String.valueOf(commune.code_postal)).append(insertSQLSplits_tDBOutput_2[1]);
                         if(commune.code_insee == null) {
-pstmtInsert_tDBOutput_2.setNull(2, java.sql.Types.INTEGER);
-} else {pstmtInsert_tDBOutput_2.setInt(2, commune.code_insee);
+pstmtInsert_tDBOutput_2.setNull(2, java.sql.Types.VARCHAR);
+} else {pstmtInsert_tDBOutput_2.setString(2, commune.code_insee);
 }
 
-                            query_tDBOutput_2 = query_tDBOutput_2.append(commune.code_insee== null ?  "null" :String.valueOf(commune.code_insee)).append(insertSQLSplits_tDBOutput_2[2]);
+                            query_tDBOutput_2 = query_tDBOutput_2.append(commune.code_insee== null ?  "null" :"'" + commune.code_insee + "'").append(insertSQLSplits_tDBOutput_2[2]);
                         if(commune.nom_commune == null) {
 pstmtInsert_tDBOutput_2.setNull(3, java.sql.Types.VARCHAR);
 } else {pstmtInsert_tDBOutput_2.setString(3, commune.nom_commune);
@@ -3895,11 +3875,11 @@ pstmt_tDBOutput_1.setNull(3, java.sql.Types.VARCHAR);
 
                         query_tDBOutput_1 = query_tDBOutput_1.append(adresse.nom_voie== null ?  "null" :"'" + adresse.nom_voie + "'").append(insertSQLSplits_tDBOutput_1[3]);
                     if(adresse.code_insee == null) {
-pstmt_tDBOutput_1.setNull(4, java.sql.Types.INTEGER);
-} else {pstmt_tDBOutput_1.setInt(4, adresse.code_insee);
+pstmt_tDBOutput_1.setNull(4, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_1.setString(4, adresse.code_insee);
 }
 
-                        query_tDBOutput_1 = query_tDBOutput_1.append(adresse.code_insee== null ?  "null" :String.valueOf(adresse.code_insee)).append(insertSQLSplits_tDBOutput_1[4]);
+                        query_tDBOutput_1 = query_tDBOutput_1.append(adresse.code_insee== null ?  "null" :"'" + adresse.code_insee + "'").append(insertSQLSplits_tDBOutput_1[4]);
                 globalMap.put("tDBOutput_1_QUERY", query_tDBOutput_1.toString().trim());
 
                        pstmt_tDBOutput_1.addBatch();
@@ -4415,9 +4395,9 @@ public static class Commune_LieuxDitStruct implements routines.system.IPersistab
 					return this.code_postal;
 				}
 				
-			    public Integer code_insee;
+			    public String code_insee;
 
-				public Integer getCode_insee () {
+				public String getCode_insee () {
 					return this.code_insee;
 				}
 				
@@ -4490,7 +4470,7 @@ public static class Commune_LieuxDitStruct implements routines.system.IPersistab
 		
 						this.code_postal = readInteger(dis);
 					
-						this.code_insee = readInteger(dis);
+					this.code_insee = readString(dis);
 					
 					this.nom_commune = readString(dis);
 					
@@ -4516,9 +4496,9 @@ public static class Commune_LieuxDitStruct implements routines.system.IPersistab
 				
 						writeInteger(this.code_postal,dos);
 					
-					// Integer
+					// String
 				
-						writeInteger(this.code_insee,dos);
+						writeString(this.code_insee,dos);
 					
 					// String
 				
@@ -4538,7 +4518,7 @@ public static class Commune_LieuxDitStruct implements routines.system.IPersistab
 		sb.append(super.toString());
 		sb.append("[");
 		sb.append("code_postal="+String.valueOf(code_postal));
-		sb.append(",code_insee="+String.valueOf(code_insee));
+		sb.append(",code_insee="+code_insee);
 		sb.append(",nom_commune="+nom_commune);
 	    sb.append("]");
 
@@ -4591,9 +4571,9 @@ public static class Adresse_LieuxDitStruct implements routines.system.IPersistab
 					return this.nom_voie;
 				}
 				
-			    public Integer code_insee;
+			    public String code_insee;
 
-				public Integer getCode_insee () {
+				public String getCode_insee () {
 					return this.code_insee;
 				}
 				
@@ -4629,26 +4609,6 @@ public static class Adresse_LieuxDitStruct implements routines.system.IPersistab
 			dos.write(byteArray);
     	}
     }
-	private Integer readInteger(ObjectInputStream dis) throws IOException{
-		Integer intReturn;
-        int length = 0;
-        length = dis.readByte();
-		if (length == -1) {
-			intReturn = null;
-		} else {
-	    	intReturn = dis.readInt();
-		}
-		return intReturn;
-	}
-
-	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
-		if(intNum == null) {
-            dos.writeByte(-1);
-		} else {
-			dos.writeByte(0);
-	    	dos.writeInt(intNum);
-    	}
-	}
 
     public void readData(ObjectInputStream dis) {
 
@@ -4660,7 +4620,7 @@ public static class Adresse_LieuxDitStruct implements routines.system.IPersistab
 		
 					this.nom_voie = readString(dis);
 					
-						this.code_insee = readInteger(dis);
+					this.code_insee = readString(dis);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -4684,9 +4644,9 @@ public static class Adresse_LieuxDitStruct implements routines.system.IPersistab
 				
 						writeString(this.nom_voie,dos);
 					
-					// Integer
+					// String
 				
-						writeInteger(this.code_insee,dos);
+						writeString(this.code_insee,dos);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -4702,7 +4662,7 @@ public static class Adresse_LieuxDitStruct implements routines.system.IPersistab
 		sb.append(super.toString());
 		sb.append("[");
 		sb.append("nom_voie="+nom_voie);
-		sb.append(",code_insee="+String.valueOf(code_insee));
+		sb.append(",code_insee="+code_insee);
 	    sb.append("]");
 
 	    return sb.toString();
@@ -4766,9 +4726,9 @@ public static class row4Struct implements routines.system.IPersistableRow<row4St
 					return this.code_postal;
 				}
 				
-			    public Integer code_insee;
+			    public String code_insee;
 
-				public Integer getCode_insee () {
+				public String getCode_insee () {
 					return this.code_insee;
 				}
 				
@@ -4893,7 +4853,7 @@ public static class row4Struct implements routines.system.IPersistableRow<row4St
 					
 						this.code_postal = readInteger(dis);
 					
-						this.code_insee = readInteger(dis);
+					this.code_insee = readString(dis);
 					
 					this.nom_commune = readString(dis);
 					
@@ -4963,9 +4923,9 @@ public static class row4Struct implements routines.system.IPersistableRow<row4St
 				
 						writeInteger(this.code_postal,dos);
 					
-					// Integer
+					// String
 				
-						writeInteger(this.code_insee,dos);
+						writeString(this.code_insee,dos);
 					
 					// String
 				
@@ -5039,7 +4999,7 @@ public static class row4Struct implements routines.system.IPersistableRow<row4St
 		sb.append("id="+id);
 		sb.append(",nom_lieu_dit="+nom_lieu_dit);
 		sb.append(",code_postal="+String.valueOf(code_postal));
-		sb.append(",code_insee="+String.valueOf(code_insee));
+		sb.append(",code_insee="+code_insee);
 		sb.append(",nom_commune="+nom_commune);
 		sb.append(",code_insee_ancienne_commune="+code_insee_ancienne_commune);
 		sb.append(",nom_ancienne_commune="+nom_ancienne_commune);
@@ -5181,7 +5141,7 @@ java.sql.Connection conn_tDBOutput_3 = null;
             }
                 if(!whetherExist_tDBOutput_3) {
                     try (java.sql.Statement stmtCreate_tDBOutput_3 = conn_tDBOutput_3.createStatement()) {
-                        stmtCreate_tDBOutput_3.execute("CREATE TABLE \"" + tableName_tDBOutput_3 + "\"(\"code_postal\" INT ,\"code_insee\" INT ,\"nom_commune\" VARCHAR(24)  ,primary key(\"code_insee\"))");
+                        stmtCreate_tDBOutput_3.execute("CREATE TABLE \"" + tableName_tDBOutput_3 + "\"(\"code_postal\" INT ,\"code_insee\" VARCHAR(5)  ,\"nom_commune\" VARCHAR(24)  ,primary key(\"code_insee\"))");
                     }
                 }
 	    java.sql.PreparedStatement pstmt_tDBOutput_3 = conn_tDBOutput_3.prepareStatement("SELECT COUNT(1) FROM \"" + "Commune" + "\" WHERE \"code_insee\" = ?");
@@ -5271,7 +5231,7 @@ java.sql.Connection conn_tDBOutput_4 = null;
             }
                 if(!whetherExist_tDBOutput_4) {
                     try (java.sql.Statement stmtCreate_tDBOutput_4 = conn_tDBOutput_4.createStatement()) {
-                        stmtCreate_tDBOutput_4.execute("CREATE TABLE \"" + tableName_tDBOutput_4 + "\"(\"nom_voie\" VARCHAR(21)  ,\"code_insee\" INT )");
+                        stmtCreate_tDBOutput_4.execute("CREATE TABLE \"" + tableName_tDBOutput_4 + "\"(\"nom_voie\" VARCHAR(21)  ,\"code_insee\" VARCHAR(5)  )");
                     }
                 }
 	    String insert_tDBOutput_4 = "INSERT INTO \"" + "ADRESSE" + "\" (\"nom_voie\",\"code_insee\") VALUES (?,?)";
@@ -5461,26 +5421,8 @@ Adresse_LieuxDitStruct Adresse_LieuxDit_tmp = new Adresse_LieuxDitStruct();
 				
 					columnIndexWithD_tFileInputDelimited_2 = 3;
 					
-						temp = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
-						if(temp.length() > 0) {
-							
-								try {
-								
-    								row4.code_insee = ParserUtils.parseTo_Integer(temp);
-    							
-    							} catch(java.lang.Exception ex_tFileInputDelimited_2) {
-									rowstate_tFileInputDelimited_2.setException(new RuntimeException(String.format("Couldn't parse value for column '%s' in '%s', value is '%s'. Details: %s",
-										"code_insee", "row4", temp, ex_tFileInputDelimited_2), ex_tFileInputDelimited_2));
-								}
-    							
-						} else {						
-							
-								
-									row4.code_insee = null;
-								
-							
-						}
-					
+							row4.code_insee = fid_tFileInputDelimited_2.get(columnIndexWithD_tFileInputDelimited_2);
+						
 				
 					columnIndexWithD_tFileInputDelimited_2 = 4;
 					
@@ -5791,8 +5733,8 @@ if(Commune_LieuxDit != null) {
         whetherReject_tDBOutput_3 = false;
 					
                     if(Commune_LieuxDit.code_insee == null) {
-pstmt_tDBOutput_3.setNull(1, java.sql.Types.INTEGER);
-} else {pstmt_tDBOutput_3.setInt(1, Commune_LieuxDit.code_insee);
+pstmt_tDBOutput_3.setNull(1, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_3.setString(1, Commune_LieuxDit.code_insee);
 }
 
             int checkCount_tDBOutput_3 = -1;
@@ -5815,11 +5757,11 @@ pstmtUpdate_tDBOutput_3.setNull(2, java.sql.Types.VARCHAR);
 
                             query_tDBOutput_3 = query_tDBOutput_3.append(Commune_LieuxDit.nom_commune== null ?  "null" :"'" + Commune_LieuxDit.nom_commune + "'").append(updateSQLSplits_tDBOutput_3[2]);
                         if(Commune_LieuxDit.code_insee == null) {
-pstmtUpdate_tDBOutput_3.setNull(3, java.sql.Types.INTEGER);
-} else {pstmtUpdate_tDBOutput_3.setInt(3, Commune_LieuxDit.code_insee);
+pstmtUpdate_tDBOutput_3.setNull(3, java.sql.Types.VARCHAR);
+} else {pstmtUpdate_tDBOutput_3.setString(3, Commune_LieuxDit.code_insee);
 }
 
-                            query_tDBOutput_3 = query_tDBOutput_3.append(Commune_LieuxDit.code_insee== null ?  "null" :String.valueOf(Commune_LieuxDit.code_insee)).append(updateSQLSplits_tDBOutput_3[3]);
+                            query_tDBOutput_3 = query_tDBOutput_3.append(Commune_LieuxDit.code_insee== null ?  "null" :"'" + Commune_LieuxDit.code_insee + "'").append(updateSQLSplits_tDBOutput_3[3]);
                     globalMap.put("tDBOutput_3_QUERY", query_tDBOutput_3.toString().trim());
                 try {
                     updatedCount_tDBOutput_3 = updatedCount_tDBOutput_3 + pstmtUpdate_tDBOutput_3.executeUpdate();
@@ -5837,11 +5779,11 @@ pstmtInsert_tDBOutput_3.setNull(1, java.sql.Types.INTEGER);
 
                             query_tDBOutput_3 = query_tDBOutput_3.append(insertSQLSplits_tDBOutput_3[0]).append(Commune_LieuxDit.code_postal== null ?  "null" :String.valueOf(Commune_LieuxDit.code_postal)).append(insertSQLSplits_tDBOutput_3[1]);
                         if(Commune_LieuxDit.code_insee == null) {
-pstmtInsert_tDBOutput_3.setNull(2, java.sql.Types.INTEGER);
-} else {pstmtInsert_tDBOutput_3.setInt(2, Commune_LieuxDit.code_insee);
+pstmtInsert_tDBOutput_3.setNull(2, java.sql.Types.VARCHAR);
+} else {pstmtInsert_tDBOutput_3.setString(2, Commune_LieuxDit.code_insee);
 }
 
-                            query_tDBOutput_3 = query_tDBOutput_3.append(Commune_LieuxDit.code_insee== null ?  "null" :String.valueOf(Commune_LieuxDit.code_insee)).append(insertSQLSplits_tDBOutput_3[2]);
+                            query_tDBOutput_3 = query_tDBOutput_3.append(Commune_LieuxDit.code_insee== null ?  "null" :"'" + Commune_LieuxDit.code_insee + "'").append(insertSQLSplits_tDBOutput_3[2]);
                         if(Commune_LieuxDit.nom_commune == null) {
 pstmtInsert_tDBOutput_3.setNull(3, java.sql.Types.VARCHAR);
 } else {pstmtInsert_tDBOutput_3.setString(3, Commune_LieuxDit.nom_commune);
@@ -5947,11 +5889,11 @@ pstmt_tDBOutput_4.setNull(1, java.sql.Types.VARCHAR);
 
                         query_tDBOutput_4 = query_tDBOutput_4.append(insertSQLSplits_tDBOutput_4[0]).append(Adresse_LieuxDit.nom_voie== null ?  "null" :"'" + Adresse_LieuxDit.nom_voie + "'").append(insertSQLSplits_tDBOutput_4[1]);
                     if(Adresse_LieuxDit.code_insee == null) {
-pstmt_tDBOutput_4.setNull(2, java.sql.Types.INTEGER);
-} else {pstmt_tDBOutput_4.setInt(2, Adresse_LieuxDit.code_insee);
+pstmt_tDBOutput_4.setNull(2, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_4.setString(2, Adresse_LieuxDit.code_insee);
 }
 
-                        query_tDBOutput_4 = query_tDBOutput_4.append(Adresse_LieuxDit.code_insee== null ?  "null" :String.valueOf(Adresse_LieuxDit.code_insee)).append(insertSQLSplits_tDBOutput_4[2]);
+                        query_tDBOutput_4 = query_tDBOutput_4.append(Adresse_LieuxDit.code_insee== null ?  "null" :"'" + Adresse_LieuxDit.code_insee + "'").append(insertSQLSplits_tDBOutput_4[2]);
                 globalMap.put("tDBOutput_4_QUERY", query_tDBOutput_4.toString().trim());
 
                        pstmt_tDBOutput_4.addBatch();
@@ -8295,6 +8237,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     200087 characters generated by Talend Open Studio for Data Integration 
- *     on the 10 décembre 2020 02:11:45 CET
+ *     198259 characters generated by Talend Open Studio for Data Integration 
+ *     on the 10 décembre 2020 11:01:52 CET
  ************************************************************************************************/
