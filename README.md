@@ -70,6 +70,21 @@ http://localhost:8080/SearchAddressByTopCounts/top_number
 http://localhost:8080/PushFile/nb_fichiers
 > **nb_fichiers** : nombre de fichiers à intégrer
 
+### Type de retour
+
+Format du json:
+
+![json_format](screenshots/format_json.png)
+
+Exemple de résultat
+
+> http://localhost:8080/SearchAdress/34%20chemin%20du%20pont
+
+![json_result](screenshots/resultat_example.png)
+
+
+
+
 
 ### Base de donnée
 
