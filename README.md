@@ -26,11 +26,11 @@ La société Establish a besoin d'une base de données qui recense les différen
 ### Business implémentation
 
 * traitement des fichiers adresses et lieux-dits : 
-  1. récupération des fichiers à partir de la source : seul les fichiers qui n'ont pas déjà été intégrés seront traités
-  2. dézip des fichiers
-  3. intégration à la base de donnée via un job talend intégré à l'application
-  4. nettoyage du répertoire d'entrée
-  5. mémorisation des fichiers intégrés 
+ 1. récupération des fichiers à partir de la source : seul les fichiers qui n'ont pas déjà été intégrés seront traités
+ 2. dézip des fichiers
+ 3. intégration à la base de donnée via un job talend intégré à l'application
+ 4. nettoyage du répertoire d'entrée
+ 5. mémorisation des fichiers intégrés 
 
 * recherche par adresse :
   * recherche de chaines partielles, du type "rue du pont Alby"
